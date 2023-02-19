@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import {
@@ -81,7 +82,15 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
   return await signInWithEmailAndPassword(auth, email, password);
 };
 
-export const signOutUser = async () => await signOut(auth);
+// export const signOutUser = async () => await signOut(auth);
+export const signOutUser = async () => {
+  await signOut(auth);
+
+  Swal.fire({
+    icon: "success",
+    title: "登出成功！",
+  });
+};
 
 export const onAuthStateChangedListener = (callback) =>
   onAuthStateChanged(auth, callback);

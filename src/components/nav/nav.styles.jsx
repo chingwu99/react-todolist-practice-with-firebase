@@ -6,8 +6,10 @@ export const NavContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 25px;
   background: #93b493;
+  position: relative;
+  z-index: 5;
+  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.4);
 `;
 
 export const LogoContainer = styled.div`
