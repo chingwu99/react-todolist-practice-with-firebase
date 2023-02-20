@@ -15,17 +15,13 @@ export const Tab = styled.div`
   height: 50px;
 `;
 
-export const Tabs = styled.div`
-  background-color: yellow;
+export const Tabs = styled.button`
+  background-color: ${(props) => (props.value == true ? "yellow" : "green")};
+  border: 0;
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  &:hover {
-    background-color: green;
-    cursor: pointer;
-  }
 `;
 
 export const ListBlock = styled.div`

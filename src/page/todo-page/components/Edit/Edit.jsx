@@ -12,7 +12,7 @@ const Edit = () => {
 
   const addTodo = () => {
     setData((pre) => {
-      return [{ text: todoText, id: v4() }, ...pre];
+      return [{ text: todoText, id: v4(), state: false }, ...pre];
     });
   };
 

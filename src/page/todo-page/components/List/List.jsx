@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { TodoContext } from "../../../../context/todo.context";
 import Item from "./components/Item";
 import {
@@ -10,26 +10,48 @@ import {
   ListFooter,
 } from "./list.styles";
 
+const defaultTabsState = {
+  all: true,
+  undo: false,
+  done: false,
+};
+
 const List = () => {
   const { data } = useContext(TodoContext);
+
+  const [tabsState, setTabsState] = useState(defaultTabsState);
+  const { all, undo, done } = tabsState;
+
+  const tabsHandler = (e) => {
+    let state = e.target.value;
+    const name = e.target.name;
+    console.log(state, name);
+    setTabsState({
+      all: false,
+      undo: false,
+      done: false,
+      [name]: true,
+    });
+  };
+
   return (
     <ListContainer>
       <Tab>
-        <Tabs>
-          <p>所有代辦</p>
+        <Tabs value={all} onClick={tabsHandler} name="all">
+          所有代辦
         </Tabs>
-        <Tabs>
-          <p>未完成</p>
+        <Tabs value={undo} onClick={tabsHandler} name="undo">
+          未完成
         </Tabs>
-        <Tabs>
-          <p>已完成</p>
+        <Tabs value={done} onClick={tabsHandler} name="done">
+          已完成
         </Tabs>
       </Tab>
       <ListBlock>
         <ListItemContainer>
           {data.map((i) => {
-            const { text, id } = i;
-            return <Item key={id} id={id} text={text} />;
+            const { text, id, state } = i;
+            return <Item key={id} id={id} text={text} state={state} />;
           })}
         </ListItemContainer>
         <ListFooter>
