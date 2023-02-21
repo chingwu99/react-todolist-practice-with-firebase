@@ -1,11 +1,15 @@
-import FormInput from "../Form-input/Form-input";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { SignInFormContainer } from "./sign-in-form.styles";
 import {
   signInWithGooglePopup,
   createUserDocumentFromAuth,
   signInAuthUserWithEmailAndPassword,
 } from "../../../../firebase/firebase.utils";
-import { useState } from "react";
+
+import Swal from "sweetalert2";
+import FormInput from "../Form-input/Form-input";
+import BaseButton from "../../../../components/BaseButton/BaseButton";
 
 const defaultFormFields = {
   email: "",
@@ -15,6 +19,7 @@ const defaultFormFields = {
 const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
+  const navigate = useNavigate();
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -22,6 +27,8 @@ const SignInForm = () => {
 
   const signInWithGoogle = async () => {
     await signInWithGooglePopup();
+
+    navigate("/todo");
   };
 
   const handleSubmit = async (event) => {
@@ -34,13 +41,23 @@ const SignInForm = () => {
       );
 
       resetFormFields();
+
+      navigate("/todo");
     } catch (error) {
       switch (error.code) {
         case "auth/wrong-password":
-          alert("incorrect password for email");
+          Swal.fire({
+            icon: "error",
+            title: "incorrect password for email",
+          });
+
           break;
         case "auth/user-not-found":
-          alert("no user associated with this email ");
+          Swal.fire({
+            icon: "error",
+            title: "no user associated with this email ",
+          });
+
           break;
         default:
           console.log(error);
@@ -56,7 +73,8 @@ const SignInForm = () => {
 
   return (
     <SignInFormContainer>
-      <h2>登入</h2>
+      <h2>Already have an account?</h2>
+      <span>Sign in with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
           label="e-mail"
@@ -72,10 +90,14 @@ const SignInForm = () => {
           value={password}
           name="password"
         />
-        <button type="submit">登入</button>
-        <button type="button" onClick={signInWithGoogle}>
-          gooogle登入
-        </button>
+        <BaseButton text="SIGN-IN" type="submit" color="tan"></BaseButton>
+        <BaseButton
+          text=" By Gooogle"
+          type="button"
+          onClick={signInWithGoogle}
+          color="black"
+          fontColor="white"
+        ></BaseButton>
       </form>
     </SignInFormContainer>
   );

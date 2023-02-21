@@ -21,11 +21,11 @@ const Edit = () => {
   return (
     <EditContainer>
       <Input
-        placeholder="請輸入代辦"
+        placeholder="What you need to do......"
         onChange={inputHandler}
         value={todoText}
       />
-      <Button onClick={addTodo}>新增</Button>
+      <Button onClick={addTodo}>Add</Button>
     </EditContainer>
   );
 };

@@ -6,7 +6,7 @@ export const ListContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 30px;
+  border-radius: 0px 0px 30px 30px;
 `;
 
 export const Tab = styled.div`
@@ -16,7 +16,7 @@ export const Tab = styled.div`
 `;
 
 export const Tabs = styled.button`
-  background-color: ${(props) => (props.value == true ? "yellow" : "green")};
+  background-color: ${(props) => (props.value === true ? "yellow" : "green")};
   border: 0;
   flex: 1;
   display: flex;
@@ -36,5 +36,15 @@ export const ListItemContainer = styled.div`
 export const ListFooter = styled.div`
   height: 50px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    :hover {
+      opacity: 0.5;
+      cursor: pointer;
+    }
+  }
 `;

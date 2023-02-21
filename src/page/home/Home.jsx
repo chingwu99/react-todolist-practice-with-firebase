@@ -5,7 +5,7 @@ import { Form, Title, HomeContainer } from "./home.styles";
 const Home = () => {
   return (
     <HomeContainer>
-      <Title> Home</Title>
+      <Title>Your Todo List !</Title>
       <Form>
         <SignInForm></SignInForm>
         <SignUpForm></SignUpForm>

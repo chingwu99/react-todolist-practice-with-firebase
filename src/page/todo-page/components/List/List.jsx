@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { TodoContext } from "../../../../context/todo.context";
 import Item from "./components/Item";
 import {
@@ -10,28 +10,27 @@ import {
   ListFooter,
 } from "./list.styles";
 
-const defaultTabsState = {
-  all: true,
-  undo: false,
-  done: false,
-};
-
 const List = () => {
-  const { data } = useContext(TodoContext);
-
-  const [tabsState, setTabsState] = useState(defaultTabsState);
+  const { data, setData, renderData, tabsState, setTabsState } =
+    useContext(TodoContext);
   const { all, undo, done } = tabsState;
 
   const tabsHandler = (e) => {
-    let state = e.target.value;
-    const name = e.target.name;
-    console.log(state, name);
+    let clickState = e.target.value;
+    let name = e.target.name;
+    console.log(clickState, name);
     setTabsState({
       all: false,
       undo: false,
       done: false,
       [name]: true,
     });
+  };
+
+  const clearDoneHandler = () => {
+    setData(data.filter((i) => i.state === false));
+
+    console.log("new", data);
   };
 
   return (
@@ -49,14 +48,14 @@ const List = () => {
       </Tab>
       <ListBlock>
         <ListItemContainer>
-          {data.map((i) => {
+          {renderData.map((i) => {
             const { text, id, state } = i;
             return <Item key={id} id={id} text={text} state={state} />;
           })}
         </ListItemContainer>
         <ListFooter>
-          <span>未完成事項</span>
-          <span>清除完成事項</span>
+          <span>{renderData.length} Undo</span>
+          <span onClick={clearDoneHandler}>Clear Done</span>
         </ListFooter>
       </ListBlock>
     </ListContainer>

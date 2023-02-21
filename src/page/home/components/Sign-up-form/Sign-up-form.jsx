@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
+import BaseButton from "../../../../components/BaseButton/BaseButton";
 import FormInput from "../Form-input/Form-input";
 import { SignUpFormContainer } from "./Sign-up-form.styles";
 import {
@@ -27,7 +29,10 @@ const SignUpForm = () => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
-      alert("passwords do not match");
+      Swal.fire({
+        icon: "error",
+        title: "passwords do not match",
+      });
       return;
     }
 
@@ -39,9 +44,17 @@ const SignUpForm = () => {
 
       await createUserDocumentFromAuth(user, { displayName });
       resetFormFields();
+
+      Swal.fire({
+        icon: "success",
+        title: "註冊成功！",
+      });
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
-        alert("Cannot create user, email already in use");
+        Swal.fire({
+          icon: "error",
+          title: "Cannot create user, email already in use",
+        });
       } else {
         console.log("user creation encountered an error", error);
       }
@@ -58,7 +71,8 @@ const SignUpForm = () => {
 
   return (
     <SignUpFormContainer>
-      <h2>註冊帳號</h2>
+      <h2>Don't have an account?</h2>
+      <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
           label="name"
@@ -74,6 +88,7 @@ const SignUpForm = () => {
           value={email}
           name="email"
         />
+
         <FormInput
           label="password"
           type="password"
@@ -81,14 +96,16 @@ const SignUpForm = () => {
           value={password}
           name="password"
         />
+
         <FormInput
           label="confirm-password"
           type="password"
           onChange={handleChange}
           value={confirmPassword}
           name="confirmPassword"
+          icon="BsFillKeyFill"
         />
-        <button type="submit">註冊</button>
+        <BaseButton type="submit" text="SIGN-UP" color="tan" />
       </form>
     </SignUpFormContainer>
   );

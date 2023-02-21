@@ -12,6 +12,7 @@ export const FormInputContainer = styled.div`
   input {
     border: none;
     border-bottom: 1px solid rgb(142, 140, 140);
-    height: 50px;
+    height: 40px;
+    font-size: 2rem;
   }
 `;

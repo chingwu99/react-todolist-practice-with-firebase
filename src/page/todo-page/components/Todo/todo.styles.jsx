@@ -14,7 +14,7 @@ export const Title = styled.div`
   width: 100%;
 
   p {
-    font-size: 2rem;
+    font-size: 5rem;
   }
 `;
 

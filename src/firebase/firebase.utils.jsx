@@ -9,9 +9,16 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  //
 } from "firebase/auth";
 
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  //
+} from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -83,12 +90,13 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 };
 
 // export const signOutUser = async () => await signOut(auth);
+
 export const signOutUser = async () => {
   await signOut(auth);
 
   Swal.fire({
     icon: "success",
-    title: "登出成功！",
+    title: "Sign Out Success！",
   });
 };
 

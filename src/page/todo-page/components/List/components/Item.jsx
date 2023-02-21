@@ -1,19 +1,31 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
+import { BsTrashFill } from "react-icons/bs";
 import { TodoContext } from "../../../../../context/todo.context";
-import { ItemContainer, Input, Label, LabelContainer } from "./item.styles";
+import {
+  ItemContainer,
+  Input,
+  Label,
+  LabelContainer,
+  DeleteButton,
+} from "./item.styles";
 
 const Item = ({ text, id, state }) => {
-  const { setData } = useContext(TodoContext);
+  const { setData, data } = useContext(TodoContext);
   const [checkState, setCheckState] = useState(state);
 
   const inputChangeHandler = (e) => {
     setCheckState(!state);
-  };
 
-  useEffect(() => {
-    state = checkState;
-    console.log(state);
-  }, [inputChangeHandler]);
+    let targetId = e.target.name;
+
+    data.forEach((i) => {
+      if (i.id === targetId) {
+        i.state = !i.state;
+      }
+    });
+
+    setData(data);
+  };
 
   const removeItem = () => {
     setData((pre) => {
@@ -35,9 +47,9 @@ const Item = ({ text, id, state }) => {
           />
         </Label>
       </LabelContainer>
-      <div>
-        <button onClick={removeItem}>刪除</button>
-      </div>
+      <DeleteButton onClick={removeItem}>
+        <BsTrashFill />
+      </DeleteButton>
     </ItemContainer>
   );
 };

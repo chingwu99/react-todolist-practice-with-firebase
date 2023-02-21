@@ -13,7 +13,8 @@ export const Input = styled.input`
   width: 500px;
   height: 50px;
   margin: 20px;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  padding-left: 10px;
 `;
 
 export const Button = styled.button`
@@ -22,10 +23,11 @@ export const Button = styled.button`
   width: 50px;
   margin-right: 20px;
   border-radius: 10px;
-  background-color: yellow;
+  background-color: rgb(228, 159, 75);
+  font-size: 1.2rem;
 
   &:hover {
-    background-color: green;
+    background-color: white;
     cursor: pointer;
   }
 `;
