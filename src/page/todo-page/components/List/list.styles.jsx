@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const FooterSpan = styled.span`
+  color: ${(props) => props.color};
+`;
+
 export const ListContainer = styled.div`
   background-color: cadetblue;
   display: flex;

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { UserContext } from "../../context/user.context";
 import { NavContainer, LogoContainer, NavLinks, NavLink } from "./nav.styles";
@@ -15,9 +15,8 @@ const Nav = () => {
         <LogoContainer>
           <AiFillHome />
         </LogoContainer>
-        <NavLinks>
-          {/* <NavLink>shop</NavLink> */}
 
+        <NavLinks>
           {currentUser ? (
             <NavLink to="/" onClick={signOutUser}>
               <GoSignOut />

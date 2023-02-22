@@ -8,6 +8,7 @@ import {
   ListBlock,
   ListItemContainer,
   ListFooter,
+  FooterSpan,
 } from "./list.styles";
 
 const List = () => {
@@ -33,6 +34,12 @@ const List = () => {
     console.log("new", data);
   };
 
+  const clearAllHandler = () => {
+    setData([]);
+
+    console.log("clearall", data);
+  };
+
   return (
     <ListContainer>
       <Tab>
@@ -54,8 +61,13 @@ const List = () => {
           })}
         </ListItemContainer>
         <ListFooter>
-          <span>{undoNum} Undo</span>
-          <span onClick={clearDoneHandler}>Clear Done</span>
+          <FooterSpan color="black">{undoNum} Undo</FooterSpan>
+          <FooterSpan color="red" onClick={clearAllHandler}>
+            Clear All
+          </FooterSpan>
+          <FooterSpan color="black" onClick={clearDoneHandler}>
+            Clear Done
+          </FooterSpan>
         </ListFooter>
       </ListBlock>
     </ListContainer>
