@@ -25,6 +25,10 @@ export const Button = styled.button`
   border-radius: 10px;
   background-color: rgb(228, 159, 75);
   font-size: 1.2rem;
+  border: solid 1px black;
+  position: relative;
+  z-index: 1;
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4);
 
   &:hover {
     background-color: white;

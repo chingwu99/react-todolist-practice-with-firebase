@@ -23,6 +23,6 @@ export const Main = styled.div`
   background-color: cadetblue;
   border-radius: 30px;
   position: relative;
-  z-index: 3;
+  z-index: 6;
   box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.4);
 `;

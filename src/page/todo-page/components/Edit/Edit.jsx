@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { TodoContext } from "../../../../context/todo.context";
 import { EditContainer, Input, Button } from "./edit.styles";
-
+import Swal from "sweetalert2";
 import { v4 } from "uuid";
 
 const Edit = () => {
@@ -11,9 +11,17 @@ const Edit = () => {
   };
 
   const addTodo = () => {
-    setData((pre) => {
-      return [{ text: todoText, id: v4(), state: false }, ...pre];
-    });
+    if (todoText.trim() === "") {
+      Swal.fire({
+        icon: "warning",
+        title: "Input What You Need To Do! ",
+      });
+    } else {
+      setData((pre) => {
+        return [{ text: todoText, id: v4(), state: false }, ...pre];
+      });
+    }
+    setTodoText("");
   };
 
   console.log(todoText);

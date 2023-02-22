@@ -10,12 +10,10 @@ import {
 } from "./item.styles";
 
 const Item = ({ text, id, state }) => {
-  const { setData, data } = useContext(TodoContext);
+  const { setData, data, setUndoNum } = useContext(TodoContext);
   const [checkState, setCheckState] = useState(state);
 
   const inputChangeHandler = (e) => {
-    setCheckState(!state);
-
     let targetId = e.target.name;
 
     data.forEach((i) => {
@@ -25,6 +23,8 @@ const Item = ({ text, id, state }) => {
     });
 
     setData(data);
+    setCheckState(!state);
+    setUndoNum(data.filter((i) => i.state === false).length);
   };
 
   const removeItem = () => {
@@ -43,7 +43,7 @@ const Item = ({ text, id, state }) => {
             name={id}
             id={id}
             onChange={inputChangeHandler}
-            value={checkState}
+            checked={checkState}
           />
         </Label>
       </LabelContainer>

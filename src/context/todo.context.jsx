@@ -13,6 +13,8 @@ export const TodoContext = createContext({
     done: false,
   },
   setTabsState: () => null,
+  undoNum: 0,
+  setUndoNum: () => null,
 });
 
 export const TodoProvider = ({ children }) => {
@@ -24,10 +26,10 @@ export const TodoProvider = ({ children }) => {
     undo: false,
     done: false,
   });
-
-  const { all, undo, done } = tabsState;
+  const [undoNum, setUndoNum] = useState(0);
 
   useEffect(() => {
+    const { all, undo, done } = tabsState;
     let upDateData = [];
     if (all === true) {
       setRenderData(data);
@@ -38,6 +40,8 @@ export const TodoProvider = ({ children }) => {
       upDateData = data.filter((i) => i.state === true);
       setRenderData(upDateData);
     }
+
+    setUndoNum(data.filter((i) => i.state === false).length);
   }, [tabsState, data]);
 
   const value = {
@@ -49,6 +53,8 @@ export const TodoProvider = ({ children }) => {
     setRenderData,
     tabsState,
     setTabsState,
+    undoNum,
+    setUndoNum,
   };
   console.log(data);
   return <TodoContext.Provider value={value}>{children}</TodoContext.Provider>;

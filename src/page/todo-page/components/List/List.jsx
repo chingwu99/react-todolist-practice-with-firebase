@@ -11,7 +11,7 @@ import {
 } from "./list.styles";
 
 const List = () => {
-  const { data, setData, renderData, tabsState, setTabsState } =
+  const { data, setData, renderData, tabsState, setTabsState, undoNum } =
     useContext(TodoContext);
   const { all, undo, done } = tabsState;
 
@@ -37,13 +37,13 @@ const List = () => {
     <ListContainer>
       <Tab>
         <Tabs value={all} onClick={tabsHandler} name="all">
-          所有代辦
+          ALL
         </Tabs>
         <Tabs value={undo} onClick={tabsHandler} name="undo">
-          未完成
+          UNDO
         </Tabs>
         <Tabs value={done} onClick={tabsHandler} name="done">
-          已完成
+          DONE
         </Tabs>
       </Tab>
       <ListBlock>
@@ -54,7 +54,7 @@ const List = () => {
           })}
         </ListItemContainer>
         <ListFooter>
-          <span>{renderData.length} Undo</span>
+          <span>{undoNum} Undo</span>
           <span onClick={clearDoneHandler}>Clear Done</span>
         </ListFooter>
       </ListBlock>
