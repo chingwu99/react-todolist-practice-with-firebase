@@ -88,13 +88,13 @@ const SignInForm = () => {
           name="password"
         />
         <BaseButton text="SIGN-IN" type="submit" color="tan"></BaseButton>
-        <BaseButton
+        {/* <BaseButton
           text=" By Gooogle"
           type="button"
           onClick={signInWithGoogle}
           color="black"
           fontColor="white"
-        ></BaseButton>
+        ></BaseButton> */}
       </form>
     </SignInFormContainer>
   );
