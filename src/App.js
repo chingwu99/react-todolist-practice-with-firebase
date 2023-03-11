@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-
 import Nav from "./components/nav/Nav";
 import Home from "./page/home/Home";
 import TodoPage from "./page/todo-page/Todo-page";
