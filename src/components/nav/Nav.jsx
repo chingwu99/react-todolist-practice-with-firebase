@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Outlet } from "react-router-dom";
 import { UserContext } from "../../context/user.context";
 import { NavContainer, LogoContainer, NavLinks, NavLink } from "./nav.styles";
