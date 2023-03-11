@@ -47,7 +47,7 @@ const SignUpForm = () => {
 
       Swal.fire({
         icon: "success",
-        title: "註冊成功！",
+        title: "Sign up cuccess ！",
       });
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
