@@ -24,7 +24,7 @@ const Edit = () => {
     setTodoText("");
   };
 
-  console.log(todoText);
+  // console.log(todoText);
 
   return (
     <EditContainer>

@@ -17,9 +17,9 @@ const List = () => {
   const { all, undo, done } = tabsState;
 
   const tabsHandler = (e) => {
-    let clickState = e.target.value;
+    // let clickState = e.target.value;
     let name = e.target.name;
-    console.log(clickState, name);
+    // console.log(clickState, name);
     setTabsState({
       all: false,
       undo: false,
@@ -31,13 +31,13 @@ const List = () => {
   const clearDoneHandler = () => {
     setData(data.filter((i) => i.state === false));
 
-    console.log("new", data);
+    // console.log("new", data);
   };
 
   const clearAllHandler = () => {
     setData([]);
 
-    console.log("clearall", data);
+    // console.log("clearall", data);
   };
 
   return (

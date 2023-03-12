@@ -56,6 +56,6 @@ export const TodoProvider = ({ children }) => {
     undoNum,
     setUndoNum,
   };
-  console.log(data);
+  // console.log(data);
   return <TodoContext.Provider value={value}>{children}</TodoContext.Provider>;
 };
