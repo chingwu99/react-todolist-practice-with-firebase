@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SignInFormContainer } from "./sign-in-form.styles";
 import {
-  // signInWithGooglePopup,
+  signInWithGooglePopup,
   // createUserDocumentFromAuth,
   signInAuthUserWithEmailAndPassword,
 } from "../../../../firebase/firebase.utils";
@@ -25,11 +25,11 @@ const SignInForm = () => {
     setFormFields(defaultFormFields);
   };
 
-  // const signInWithGoogle = async () => {
-  //   await signInWithGooglePopup();
+  const signInWithGoogle = async () => {
+    await signInWithGooglePopup();
 
-  //   navigate("/todo");
-  // };
+    navigate("/todo");
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -88,13 +88,13 @@ const SignInForm = () => {
           name="password"
         />
         <BaseButton text="SIGN-IN" type="submit" color="tan"></BaseButton>
-        {/* <BaseButton
+        <BaseButton
           text=" By Gooogle"
           type="button"
           onClick={signInWithGoogle}
           color="black"
           fontColor="white"
-        ></BaseButton> */}
+        ></BaseButton>
       </form>
     </SignInFormContainer>
   );
